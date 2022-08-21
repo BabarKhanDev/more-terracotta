@@ -5,8 +5,8 @@
   "block.moreterracotta.orange_concrete_slab": "Orange Concrete Slab",
   "block.moreterracotta.magenta_terracotta_slab": "Magenta Terracotta Slab",
   "block.moreterracotta.magenta_concrete_slab": "Magenta Concrete Slab",
-  "block.moreterracotta.light_blue_terracotta_slab": "Light_blue Terracotta Slab",
-  "block.moreterracotta.light_blue_concrete_slab": "Light_blue Concrete Slab",
+  "block.moreterracotta.light_blue_terracotta_slab": "Light Blue Terracotta Slab",
+  "block.moreterracotta.light_blue_concrete_slab": "Light Blue Concrete Slab",
   "block.moreterracotta.yellow_terracotta_slab": "Yellow Terracotta Slab",
   "block.moreterracotta.yellow_concrete_slab": "Yellow Concrete Slab",
   "block.moreterracotta.lime_terracotta_slab": "Lime Terracotta Slab",
@@ -15,8 +15,8 @@
   "block.moreterracotta.pink_concrete_slab": "Pink Concrete Slab",
   "block.moreterracotta.gray_terracotta_slab": "Gray Terracotta Slab",
   "block.moreterracotta.gray_concrete_slab": "Gray Concrete Slab",
-  "block.moreterracotta.light_gray_terracotta_slab": "Light_gray Terracotta Slab",
-  "block.moreterracotta.light_gray_concrete_slab": "Light_gray Concrete Slab",
+  "block.moreterracotta.light_gray_terracotta_slab": "Light Gray Terracotta Slab",
+  "block.moreterracotta.light_gray_concrete_slab": "Light Gray Concrete Slab",
   "block.moreterracotta.cyan_terracotta_slab": "Cyan Terracotta Slab",
   "block.moreterracotta.cyan_concrete_slab": "Cyan Concrete Slab",
   "block.moreterracotta.purple_terracotta_slab": "Purple Terracotta Slab",
@@ -31,6 +31,9 @@
   "block.moreterracotta.red_concrete_slab": "Red Concrete Slab",
   "block.moreterracotta.black_terracotta_slab": "Black Terracotta Slab",
   "block.moreterracotta.black_concrete_slab": "Black Concrete Slab",
+  "block.moreterracotta.terracotta_slab": "Terracotta Slab",
+
+  "block.moreterracotta.terracotta_stairs": "Terracotta Stairs",
 
   "itemGroup.moreterracotta.terracotta_group": "More Terracotta",
   "itemGroup.moreterracotta.concrete_group": "More Concrete"

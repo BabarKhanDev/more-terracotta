@@ -4,10 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.Material;
-import net.minecraft.block.SlabBlock;
+import net.minecraft.block.*;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -45,12 +42,8 @@ public class MoreTerracotta implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
 
-		LOGGER.info("Hello Fabric world!");
-
+		//generate slabs
 		for(String colour:dye_colours) {
 			String terracotta_name = colour + "_terracotta_slab";
 			registerBlock(terracotta_name, new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f)), MoreTerracotta.TERRACOTTA_GROUP);
@@ -60,6 +53,11 @@ public class MoreTerracotta implements ModInitializer {
 		}
 
 		registerBlock("terracotta_slab", new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f)), MoreTerracotta.TERRACOTTA_GROUP);
+
+
+		//generate stairs
+		registerBlock("terracotta_stairs", new StairsBlock(Blocks.TERRACOTTA.getDefaultState(),
+				FabricBlockSettings.of(Material.STONE).strength(4.0f)), MoreTerracotta.TERRACOTTA_GROUP);
 
 	}
 }
