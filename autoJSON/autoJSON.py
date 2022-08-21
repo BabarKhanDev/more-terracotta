@@ -64,12 +64,18 @@ def stair_crafting_table_recipe_formula(colour,block):
 def stair_stonecutting_recipe_formula(colour, block):
     return ["{","  \"type\": \"minecraft:stonecutting\",","  \"ingredient\": {",f"    \"item\": \"minecraft:{colour}_{block}\"","  },",f"  \"result\": \"moreterracotta:{colour}_{block}_stairs\",","  \"count\": 1","}"]
 
+def look_tables_formula(colour,block,stair):
+    return ["{","  \"type\": \"minecraft:block\",","  \"pools\": [","    {","      \"rolls\": 1,","      \"entries\": [","        {","          \"type\": \"minecraft:item\",",f"          \"name\": \"moreterracotta:{colour}_{block}_{stair}\"","        }","      ],","      \"conditions\": [","        {","          \"condition\": \"minecraft:survives_explosion\"","        }","      ]","    }","  ]","}"]
+
 lang_file = open(f"lang/en_gb.json", "w")
 lang_file.write("{\n")
 
 for colour in COLOURS:
     for block in ["terracotta", "concrete"]:
 
+        print(f"\"moreterracotta:{colour}_{block}_slab\",")
+        print(f"\"moreterracotta:{colour}_{block}_stairs\",")
+        
         w_to_json(f"blockstates/{colour}_{block}_slab.json", slab_blockstate_formula(colour, block))                        #Generate blockstate JSON Files for Slabs
         w_to_json(f"blockstates/{colour}_{block}_stairs.json",stair_blockstate_formula(colour, block))                      #Generate blockstate JSON Files for Stairs  
         w_to_json(f"slabtops/{colour}_{block}_slab_top.json", slab_formula("_top", colour, block))                          #Generate model JSON Files for Slab Tops
@@ -83,7 +89,8 @@ for colour in COLOURS:
         w_to_json(f"recipes/{colour}_{block}_stairs.json", stair_crafting_table_recipe_formula(colour, block))              #Generate crafting table recipe JSON Files for Stairs
         w_to_json(f"recipes/{colour}_{block}_slab_stonecutting.json", slab_stonecutting_recipe_formula(colour, block))      #Generate stonecutting JSON Files for Slabs
         w_to_json(f"recipes/{colour}_{block}_stairs_stonecutting.json", stair_stonecutting_recipe_formula(colour, block))   #Generate stonecutting JSON Files for Stairs
-
+        w_to_json(f"loot_tables/{colour}_{block}_slab.json", look_tables_formula(colour,block,"slab"))                      #Generate loottables for Slabs
+        w_to_json(f"loot_tables/{colour}_{block}_stairs.json", look_tables_formula(colour,block,"stairs"))                  #Generate loottables for Stairs
 
         lang_colour = " ".join([i.capitalize() for i in colour.split("_")])                                                     #Remove the _ from colour names and capitalise each word
         lang_file.write(f"  \"block.moreterracotta.{colour}_{block}_slab\": \"{lang_colour} {block.capitalize()} Slab\",")      #Add languages for Slabs

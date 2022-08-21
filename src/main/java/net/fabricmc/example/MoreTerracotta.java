@@ -45,26 +45,26 @@ public class MoreTerracotta implements ModInitializer {
 		//generate slabs
 		for(String colour:dye_colours) {
 			String terracotta_name = colour + "_terracotta_slab";
-			registerBlock(terracotta_name, new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f)), MoreTerracotta.TERRACOTTA_GROUP);
+			registerBlock(terracotta_name, new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(1.25f)), MoreTerracotta.TERRACOTTA_GROUP);
 
 			String concrete_name = colour + "_concrete_slab";
-			registerBlock(concrete_name, new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f)), MoreTerracotta.CONCRETE_GROUP);
+			registerBlock(concrete_name, new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(1.8f)), MoreTerracotta.CONCRETE_GROUP);
 		}
-		registerBlock("terracotta_slab", new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f)), MoreTerracotta.TERRACOTTA_GROUP);
+		registerBlock("terracotta_slab", new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(1.25f)), MoreTerracotta.TERRACOTTA_GROUP);
 
 		//generate stairs
 
 		for(String colour:dye_colours) {
 			String terracotta_name = colour + "_terracotta_stairs";
 			registerBlock(terracotta_name, new StairsBlock(Blocks.TERRACOTTA.getDefaultState(),
-					FabricBlockSettings.of(Material.STONE).strength(4.0f)), MoreTerracotta.TERRACOTTA_GROUP);
+					FabricBlockSettings.of(Material.STONE).strength(1.25f)), MoreTerracotta.TERRACOTTA_GROUP);
 
 			String concrete_name = colour + "_concrete_stairs";
 			registerBlock(concrete_name, new StairsBlock(Blocks.WHITE_CONCRETE.getDefaultState(),
-					FabricBlockSettings.of(Material.STONE).strength(4.0f)), MoreTerracotta.CONCRETE_GROUP);
+					FabricBlockSettings.of(Material.STONE).strength(1.8f)), MoreTerracotta.CONCRETE_GROUP);
 		}
 		registerBlock("terracotta_stairs", new StairsBlock(Blocks.TERRACOTTA.getDefaultState(),
-				FabricBlockSettings.of(Material.STONE).strength(4.0f)), MoreTerracotta.TERRACOTTA_GROUP);
+				FabricBlockSettings.of(Material.STONE).strength(1.25f)), MoreTerracotta.TERRACOTTA_GROUP);
 
 	}
 }
