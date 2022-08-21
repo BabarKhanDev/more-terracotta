@@ -17,54 +17,10 @@ public class MoreTerracotta implements ModInitializer {
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LoggerFactory.getLogger("modid");
 
-	// Register Our Item Groups
-	public static final ItemGroup TERRACOTTA_GROUP = FabricItemGroupBuilder.build(
-			new Identifier("moreterracotta", "terracotta_group"),
-			() -> new ItemStack(Blocks.TERRACOTTA));
-
-	// Register Our Item Groups
-	public static final ItemGroup CONCRETE_GROUP = FabricItemGroupBuilder.build(
-			new Identifier("moreterracotta", "concrete_group"),
-			() -> new ItemStack(Blocks.WHITE_CONCRETE));
-
-	public static void registerBlock(String name, Block block, ItemGroup blockGroup){
-		registerBlockItem(name, block, blockGroup);
-		Registry.register(Registry.BLOCK, new Identifier("moreterracotta", name), block);
-	}
-
-	public static void registerBlockItem(String name, Block block, ItemGroup blockGroup){
-		Registry.register(Registry.ITEM, new Identifier("moreterracotta", name),
-				new BlockItem(block, new FabricItemSettings().group(blockGroup)));
-	}
-
-	public String[] dye_colours = new String[] {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"};
-
 	@Override
 	public void onInitialize() {
 
-		//generate slabs
-		for(String colour:dye_colours) {
-			String terracotta_name = colour + "_terracotta_slab";
-			registerBlock(terracotta_name, new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(1.25f)), MoreTerracotta.TERRACOTTA_GROUP);
-
-			String concrete_name = colour + "_concrete_slab";
-			registerBlock(concrete_name, new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(1.8f)), MoreTerracotta.CONCRETE_GROUP);
-		}
-		registerBlock("terracotta_slab", new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(1.25f)), MoreTerracotta.TERRACOTTA_GROUP);
-
-		//generate stairs
-
-		for(String colour:dye_colours) {
-			String terracotta_name = colour + "_terracotta_stairs";
-			registerBlock(terracotta_name, new StairsBlock(Blocks.TERRACOTTA.getDefaultState(),
-					FabricBlockSettings.of(Material.STONE).strength(1.25f)), MoreTerracotta.TERRACOTTA_GROUP);
-
-			String concrete_name = colour + "_concrete_stairs";
-			registerBlock(concrete_name, new StairsBlock(Blocks.WHITE_CONCRETE.getDefaultState(),
-					FabricBlockSettings.of(Material.STONE).strength(1.8f)), MoreTerracotta.CONCRETE_GROUP);
-		}
-		registerBlock("terracotta_stairs", new StairsBlock(Blocks.TERRACOTTA.getDefaultState(),
-				FabricBlockSettings.of(Material.STONE).strength(1.25f)), MoreTerracotta.TERRACOTTA_GROUP);
+			ModBlocks.registerModBlocks();
 
 	}
 }
