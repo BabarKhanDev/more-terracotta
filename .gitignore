@@ -31,3 +31,11 @@ bin/
 # fabric
 
 run/
+/autoJSON/blockstates/
+/autoJSON/items/
+/autoJSON/lang/
+/autoJSON/recipes/
+/autoJSON/slabs/
+/autoJSON/slabtops/
+/autoJSON/stairs/
+
