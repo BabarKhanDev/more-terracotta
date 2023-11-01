@@ -11,6 +11,7 @@ public class MoreTerracotta implements ModInitializer {
 	public void onInitialize() {
 		try {
 			ModBlocks.registerModBlocks();
+			ModItemGroups.initialiseItemGroups();
 		}
 		catch (Throwable ex) {
 			LOGGER.error(ex.toString());

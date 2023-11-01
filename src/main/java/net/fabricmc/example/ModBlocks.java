@@ -7,19 +7,21 @@ import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
 
 public class ModBlocks {
 
     public static String[] dye_colours = new String[] {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"};
 
-    public static void registerBlock(String name, Block block, ItemGroup blockGroup){
+    public static void registerBlock(String name, Block block, RegistryKey<ItemGroup> blockGroup){
         registerBlockItem(name, block, blockGroup);
         Registry.register(Registries.BLOCK, new Identifier("moreterracotta", name), block);
     }
 
-    public static void registerBlockItem(String name, Block block, ItemGroup blockGroup){
+    public static void registerBlockItem(String name, Block block, RegistryKey<ItemGroup> blockGroup){
 
         BlockItem blockItem =  new BlockItem(block, new FabricItemSettings());
 
@@ -33,27 +35,27 @@ public class ModBlocks {
     public static void generateSlabs(String[] dye_colours){
         for(String colour:dye_colours) {
             String terracotta_name = colour + "_terracotta_slab";
-            registerBlock(terracotta_name, new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(1.25f)), ModItemGroups.TERRACOTTA_GROUP);
+            registerBlock(terracotta_name, new SlabBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.STONE).strength(1.25f)), ModItemGroups.TERRACOTTA_GROUP);
 
             String concrete_name = colour + "_concrete_slab";
-            registerBlock(concrete_name, new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(1.8f)), ModItemGroups.CONCRETE_GROUP);
+            registerBlock(concrete_name, new SlabBlock(FabricBlockSettings.create().strength(1.8f)), ModItemGroups.CONCRETE_GROUP);
         }
         registerBlock("terracotta_slab", new SlabBlock(
-                FabricBlockSettings.of(Material.STONE).strength(1.25f)), ModItemGroups.TERRACOTTA_GROUP);
+                FabricBlockSettings.create().sounds(BlockSoundGroup.STONE).strength(1.25f)), ModItemGroups.TERRACOTTA_GROUP);
     }
 
     public static void generateStairs(String[] dye_colours){
         for(String colour:dye_colours) {
             String terracotta_name = colour + "_terracotta_stairs";
             registerBlock(terracotta_name, new StairsBlock(Blocks.TERRACOTTA.getDefaultState(),
-                    FabricBlockSettings.of(Material.STONE).strength(1.25f)), ModItemGroups.TERRACOTTA_GROUP);
+                    FabricBlockSettings.create().sounds(BlockSoundGroup.STONE).strength(1.25f)), ModItemGroups.TERRACOTTA_GROUP);
 
             String concrete_name = colour + "_concrete_stairs";
             registerBlock(concrete_name, new StairsBlock(Blocks.WHITE_CONCRETE.getDefaultState(),
-                    FabricBlockSettings.of(Material.STONE).strength(1.8f)), ModItemGroups.CONCRETE_GROUP);
+                    FabricBlockSettings.create().strength(1.8f)), ModItemGroups.CONCRETE_GROUP);
         }
         registerBlock("terracotta_stairs", new StairsBlock(Blocks.TERRACOTTA.getDefaultState(),
-                FabricBlockSettings.of(Material.STONE).strength(1.25f)), ModItemGroups.TERRACOTTA_GROUP);
+                FabricBlockSettings.create().sounds(BlockSoundGroup.STONE).strength(1.25f)), ModItemGroups.TERRACOTTA_GROUP);
     }
 
     public static void generateWalls(String[] dye_colours){
@@ -61,14 +63,14 @@ public class ModBlocks {
         for(String colour:dye_colours) {
             String terracotta_name = colour + "_terracotta_wall";
             registerBlock(terracotta_name, new WallBlock(
-                    FabricBlockSettings.of(Material.STONE).strength(1.25f)), ModItemGroups.TERRACOTTA_GROUP);
+                    FabricBlockSettings.create().sounds(BlockSoundGroup.STONE).strength(1.25f)), ModItemGroups.TERRACOTTA_GROUP);
 
             String concrete_name = colour + "_concrete_wall";
             registerBlock(concrete_name, new WallBlock(
-                    FabricBlockSettings.of(Material.STONE).strength(1.8f)), ModItemGroups.CONCRETE_GROUP);
+                    FabricBlockSettings.create().strength(1.8f)), ModItemGroups.CONCRETE_GROUP);
         }
 
-        registerBlock("terracotta_wall", new WallBlock(FabricBlockSettings.of(Material.STONE).strength(1.25f)), ModItemGroups.TERRACOTTA_GROUP);
+        registerBlock("terracotta_wall", new WallBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.STONE).strength(1.25f)), ModItemGroups.TERRACOTTA_GROUP);
     }
 
     public static void registerModBlocks(){
