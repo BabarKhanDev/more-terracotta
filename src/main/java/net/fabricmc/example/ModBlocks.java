@@ -1,12 +1,14 @@
 package net.fabricmc.example;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
 
 public class ModBlocks {
 
@@ -14,12 +16,18 @@ public class ModBlocks {
 
     public static void registerBlock(String name, Block block, ItemGroup blockGroup){
         registerBlockItem(name, block, blockGroup);
-        Registry.register(Registry.BLOCK, new Identifier("moreterracotta", name), block);
+        Registry.register(Registries.BLOCK, new Identifier("moreterracotta", name), block);
     }
 
     public static void registerBlockItem(String name, Block block, ItemGroup blockGroup){
-        Registry.register(Registry.ITEM, new Identifier("moreterracotta", name),
-                new BlockItem(block, new FabricItemSettings().group(blockGroup)));
+
+        BlockItem blockItem =  new BlockItem(block, new FabricItemSettings());
+
+        Registry.register(Registries.ITEM, new Identifier("moreterracotta", name), blockItem);
+
+        ItemGroupEvents.modifyEntriesEvent(blockGroup).register(content -> {
+            content.add(blockItem);
+        });
     }
 
     public static void generateSlabs(String[] dye_colours){
